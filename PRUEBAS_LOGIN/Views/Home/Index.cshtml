@@ -1,0 +1,173 @@
+﻿
+
+<head>
+    <!-- Enlace a Google Fonts para las fuentes seleccionadas -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<main>
+    <style>
+        /* Fondo con gradiente */
+        .hero-section {
+            background-image: url('@Url.Content("~/Images/Fondo.png")'); /* imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.5); /* Efecto de oscurecimiento */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .hero-section h1 {
+            font-size: 200em; /* Tamaño del texto principal */
+            margin: 0;
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* Estilos del título principal */
+        #title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4em;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+
+        /* Estilos de la descripción */
+        .lead {
+            font-family: 'Raleway', sans-serif;
+            font-size: 3.4em;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos del botón */
+        .hero-btn {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            border-radius: 25px;
+            padding: 10px 30px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        /* Animación al pasar el mouse sobre el botón */
+        .hero-btn:hover {
+            background-color: #ffffff;
+            color: #02AC66;
+            transform: scale(1.05);
+        }
+
+        /* Sección de Misión y Visión */
+        #mision-vision h2 {
+            color: #02AC66;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+        }
+
+        #mision-vision p {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1em;
+        }
+    </style>
+
+    <!-- Hero Section -->
+    <section class="hero-section row align-items-center justify-content-center text-center py-5">
+        <div class="col-md-8">
+            <!-- Logo de la empresa -->
+            <img src="~/Images/techboard.jpeg" class="img-fluid mb-4" alt="Logo de Techboard" style="width: 400px; border-radius: 15px;">
+            <!-- Título principal de la página -->
+            <h1 id="title"><strong>TECHBOARD LOGISTIC COMPANY</strong></h1>
+            <!-- Descripción breve de la empresa -->
+            <p class="lead">
+                Dedicada a la logística y distribución de componentes electrónicos y placas PCB para impulsar la tecnología del futuro.
+            </p>
+            <!-- Botón que enlaza a la sección "¿Quiénes Somos?" -->
+            <a href="#quienes-somos" class="btn btn-light hero-btn">¿QUIÉNES SOMOS?</a>
+        </div>
+    </section>
+
+    <!-- Sección de Misión y Visión -->
+    <section id="mision-vision" class="row py-5" style="background-color: #D8E9E5;">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h2 class="mb-4">Nuestra Misión y Visión</h2>
+            <p><strong>Misión:</strong> Proveer soluciones logísticas especializadas en el manejo de componentes electrónicos y placas PCB, asegurando su transporte seguro, eficiente y puntual para contribuir al desarrollo tecnológico.</p>
+            <p><strong>Visión:</strong> Ser la empresa líder en logística de componentes electrónicos en el mercado, reconocida por nuestra calidad, confiabilidad y compromiso con la innovación en la cadena de suministro.</p>
+        </div>
+    </section>
+
+    <!-- Sección "¿Quiénes Somos?" -->
+    <section id="quienes-somos" class="row bg-light py-5">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h2 class="mb-4" style="color: #02AC66;">¿Quiénes Somos?</h2>
+            <p>
+                Techboard es una empresa líder en soluciones de logística especializada en el transporte de placas de circuito impreso (PCB).
+                Desde su fundación, Techboard se ha comprometido a facilitar la entrega segura y puntual de productos electrónicos críticos, ofreciendo servicios de envío adaptados a las necesidades de la industria de la tecnología.
+            </p>
+            <p>
+                Con un enfoque en calidad, precisión y confiabilidad, nuestros procesos están diseñados para manejar componentes frágiles y de alta complejidad con el máximo cuidado, asegurando que cada placa PCB llegue en condiciones óptimas a su destino.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section class="row text-center py-5" style="background-color: #FFFFFF;">
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <h3 class="card-title" style="color: #02AC66;">Creación de pedidos</h3>
+                    <p class="card-text">
+                        Ofrecemos un servicio integral para la recolección de placas PCB. Nos aseguramos de que el proceso sea sencillo, rápido y seguro, gestionando el transporte y la distribución de acuerdo con tus necesidades específicas.
+                    </p>
+                    <!-- Enlace a la vista de Pedido -->
+                    <a class="btn btn-outline-success" href="@Url.Action("Pedido", "Pedido")">Más información &raquo;</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <h3 class="card-title" style="color: #02AC66;">Paqueterías disponibles</h3>
+                    <p class="card-text">
+                        Contamos con varias opciones de paquetería para el envío seguro y puntual de tus productos electrónicos. Ofrecemos soluciones adaptadas a tus necesidades.
+                    </p>
+                    <!-- Enlace a la vista de Paqueteria -->
+                    <a class="btn btn-outline-success" href="@Url.Action("Paqueteria","Paqueteria")">Más información &raquo;</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <h3 class="card-title" style="color: #02AC66;">Comprobante de operación</h3>
+                    <p class="card-text">
+                        Brindamos comprobantes detallados de las operaciones realizadas, incluyendo el seguimiento y entrega de cada paquete. Estos comprobantes garantizan la transparencia y trazabilidad de cada envío, ofreciendo seguridad tanto a nuestros clientes como a sus productos.
+                    </p>
+                    <a class="btn btn-outline-success" href="#">Más información &raquo;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sección de Contacto -->
+    <section id="contact" class="row text-center py-5" style="background-color: #02AC66; color: #ffffff;">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="mb-4">Contáctanos</h2>
+            <p>¿Tienes preguntas o necesitas una cotización? ¡Nos encantaría saber de ti!</p>
+            <a href="mailto:contacto@techboard.com" class="btn btn-light btn-lg">Envíanos un correo &raquo;</a>
+            <p class="mt-4">O llámanos al: +1 234 567 890</p>
+        </div>
+    </section>
+</main>

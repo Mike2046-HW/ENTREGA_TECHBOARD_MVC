@@ -1,0 +1,38 @@
+﻿@model PRUEBAS_LOGIN.Models.Productos
+
+@{
+    ViewBag.Title = "EditarProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="card border-secondary">
+            <div class="card-header bg-secondary text-white">
+                <h4>EDITAR PRODUCTO</h4>
+            </div> 
+            <div class="card-body">
+                <form action="@Url.Action("EditarProducto", "Inventario")" method="post">
+                    <input type="hidden" class="form-control" name="Producto_Id" value="@Html.DisplayTextFor(p => p.Producto_Id)" required />
+
+                    <div class="form-group">
+                        <label>NOMBRE:</label>
+                        <input type="text" class="form-control" name="Nombre" value="@Html.DisplayTextFor(p => p.Nombre)" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stock:</label>
+                        <input type="text" class="form-control" name="Cantidad" value="@Html.DisplayTextFor(p => p.Cantidad)" required />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Inventario", "Inventario")">Regresar</a>
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

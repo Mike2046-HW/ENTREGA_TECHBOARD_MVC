@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PRUEBAS_LOGIN.Models.Pedido>
+
+@{
+    ViewBag.Title = "Pedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="card border-dark">
+            <div class="card-header bg-dark text-white">
+                <h4>PEDIDOS ACTUALES</h4>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-success" href="@Url.Action("AgregarPedido","Pedido")">Crear nuevo pedido</a>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Fecha de Envío</th>
+                                <th>Comprador</th>
+                                <th>Estado</th>
+                                <th>Paqueteria</th>
+                                <th>Tipo de Producto</th>
+                                <th>Nombre de Producto</th>
+                                <th>Unidades</th>
+                                <th>Vendedor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var item in Model)
+                                {
+                                                        <tr>
+                                                            <td>@item.ID</td>
+                                                            <td>@item.FechaPedido</td>
+                                                            <td>@item.Comprador</td>
+                                                            <td>@item.Estado</td>
+                                                            <td>@item.Paqueteria</td>
+                                                            <td>@item.TipoDeProducto</td>
+                                                            <td>@item.NombreProducto</td>
+                                                            <td>@item.Cantidad</td>
+                                                            <td>@item.Vendedor</td>
+                                                        </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

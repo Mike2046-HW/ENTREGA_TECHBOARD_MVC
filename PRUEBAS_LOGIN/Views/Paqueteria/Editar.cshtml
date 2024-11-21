@@ -1,0 +1,40 @@
+﻿@model PRUEBAS_LOGIN.Models.Paqueteria
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="card border-secondary">
+            <div class="card-header bg-secondary text-white">
+                <h4>EDITAR PAQUETERIA</h4>
+            </div>
+            <div class="card-body">
+                <form action="@Url.Action("Editar","Paqueteria")" method="post">
+                    <input type="hidden" class="form-control" name="Paqueteria_Id" value="@Html.DisplayTextFor(p => p.Paqueteria_Id)" required />
+
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control" name="Nombre" value="@Html.DisplayTextFor(p => p.Nombre)" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Correo de contacto:</label>
+                        <input type="text" class="form-control" name="Correo_Electronico" value="@Html.DisplayTextFor(p => p.Correo_Electronico)" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono:</label>
+                        <input type="text" class="form-control" name="Telefono" value="@Html.DisplayTextFor(p => p.Telefono)" required />
+                        <label></label>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Paqueteria","Paqueteria")">Regresar</a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

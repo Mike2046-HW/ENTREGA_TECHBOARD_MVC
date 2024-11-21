@@ -1,0 +1,36 @@
+﻿@model PRUEBAS_LOGIN.Models.Paqueteria
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="card border-secondary">
+            <div class="card-header bg-secondary text-white">
+                <h4>ELIMINAR PAQUETERIA</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-danger">
+                    <p>
+                        <strong>
+                            Esta a punto de eliminar esta paquetería, dicha acción no se puede deshacer.
+                            ¿Está seguro de eliminar a @Html.DisplayTextFor(m => m.Nombre) del sistema?
+                            DICHA ACCIÓN ELIMINARÁ LOS PEDIDOS ASOCIADOS A LA MISMA.
+                        </strong>
+                    </p>
+                </div>
+
+                <form action="@Url.Action("Eliminar","Paqueteria")" method="post">
+                    <input type="hidden" class="form-control" name="Paqueteria_Id" value="@Html.DisplayTextFor(p => p.Paqueteria_Id)" required />
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Paqueteria","Paqueteria")">Regresar</a>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@model PRUEBAS_LOGIN.Models.Usuario
+
+@{
+    ViewBag.Title = "EliminarUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="card border-secondary">
+            <div class="card-header bg-secondary text-white">
+                <h4>ELIMINAR USUARIO</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-danger">
+                    Esta a punto de eliminar este usuario, dicha acción no se puede deshacer.
+                    ¿Está seguro de eliminar a @Html.DisplayTextFor(m => m.Nombre) del sistema?
+                </div>
+
+                <form action="@Url.Action("EliminarUsuario","Usuario")" method="post">
+                    <input type="hidden" class="form-control" name="IdUsuario" value="@Html.DisplayTextFor(p => p.IdUsuario)" required />
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Usuarios","Usuario")">Regresar</a>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

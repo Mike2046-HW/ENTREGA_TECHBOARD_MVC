@@ -1,0 +1,104 @@
+﻿@model List<PRUEBAS_LOGIN.Models.Paqueteria>
+
+@{
+    ViewBag.Title = "Paqueteria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <!-- Estilos para Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <style>
+        #mi_mapa {
+            height: 50vh; /* 50% de la altura del viewport */
+            width: 100%; /* 100% del ancho del contenedor */
+        }
+
+        #chart_div {
+            width: 100%; /* 100% del ancho del contenedor */
+            height: 50vh; /* 50% de la altura del viewport */
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sección de Paqueterías Disponibles -->
+    <div class="row mt-3">
+        <div class="col-sm-12">
+            <div class="card border-dark">
+                <div class="card-header bg-dark text-white">
+                    <h4>PAQUETERÍAS DISPONIBLES</h4>
+                </div>
+                <div class="card-body">
+                    <a class="btn btn-success" href="@Url.Action("Agregar", "Paqueteria")">Agregar Paquetería</a>
+                    <hr />
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nombre Paquetería</th>
+                                    <th>Correo de Contacto</th>
+                                    <th>Teléfono de Contacto</th>
+                                    <th style="width:150px"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (PRUEBAS_LOGIN.Models.Paqueteria item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.Correo_Electronico</td>
+                                        <td>@item.Telefono</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("Editar", "Paqueteria", new { Paqueteria_Id = item.Paqueteria_Id })">Editar</a>
+                                            <a class="btn btn-danger btn-sm" href="@Url.Action("Eliminar", "Paqueteria", new { Paqueteria_Id = item.Paqueteria_Id })">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    @if (TempData["mensaje"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @TempData["mensaje"]
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección del Mapa -->
+    <div class="card border-dark mt-3">
+        <h2 class="text-center">MAPA</h2>
+        <div id="mi_mapa"></div>
+    </div>
+
+    <!-- Código de Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+        let map = L.map('mi_mapa').setView([32.528977, -116.987266], 14);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([32.528977, -116.987266]).addTo(map)
+            .bindPopup("Instituto Tecnológico de Tijuana Unidad Tomas Aquino")
+            .openPopup();
+
+        L.marker([32.53270, -116.96431]).addTo(map)
+            .bindPopup("Universidad Autónoma de Baja California")
+            .openPopup();
+
+        L.marker([32.504826, -116.975620]).addTo(map)
+            .bindPopup("Oficina de correos DHL")
+            .openPopup();
+    </script>
+</body>

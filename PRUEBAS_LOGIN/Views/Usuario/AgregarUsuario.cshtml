@@ -1,0 +1,59 @@
+﻿@model PRUEBAS_LOGIN.Models.Usuario
+
+@{
+    ViewBag.Title = "AgregarUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="card border-secondary">
+            <div class="card-header bg-secondary text-white">
+                <h4>AGREGAR NUEVO USUARIO</h4>
+            </div>
+            <div class="card-body">
+                <form action="@Url.Action("AgregarUsuario","Usuario")" method="post">
+                    <div class="form-group">
+                        <label>Nombre de usuario:</label>
+                        <input type="text" class="form-control" name="Nombre" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Correo:</label>
+                        <input type="text" class="form-control" name="Correo" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Clave:</label>
+                        <input type="text" class="form-control" name="Clave" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Confirmar clave:</label>
+                        <input type="text" class="form-control" name="ConfirmarClave" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Rol:</label>
+                        @Html.DropDownListFor(
+                            m => m.Id_rol,
+                            new SelectList(Enum.GetValues(typeof(PRUEBAS_LOGIN.Models.Rol))
+                                .Cast<PRUEBAS_LOGIN.Models.Rol>()
+                                .Select(r => new { Value = r, Text = r.ToString() }),
+                            "Value", "Text")
+                        )
+                        <label></label>
+
+                    </div>
+                    @if (ViewData["mensaje"] != null)
+                    {
+                        <div class="alert alert-danger mt-2" role="alert">
+                            @ViewData["mensaje"]
+                        </div>
+                    }
+                    <h1></h1>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a class="btn btn-danger" href="@Url.Action("Usuarios","Usuario")">Regresar</a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

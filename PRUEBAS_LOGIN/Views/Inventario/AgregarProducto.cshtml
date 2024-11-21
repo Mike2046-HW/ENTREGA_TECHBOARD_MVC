@@ -1,0 +1,49 @@
+﻿@model PRUEBAS_LOGIN.Models.Productos
+
+@{
+    ViewBag.Title = "AgregarProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="card border-secondary">
+            <div class="card-header bg-secondary text-white">
+                <h4>AGREGAR NUEVO PRODUCTO</h4>
+            </div>
+            <div class="card-body">
+                <form action="@Url.Action("AgregarProducto","Inventario")" method="post">
+                    <div class="form-group">
+                        <label>Tipo de Producto:</label>
+
+
+                        <select class="form-control" name="Nombre_Tipo" required>
+                            <option value="">Seleccione un tipo de producto</option>
+                            @foreach (var item in ViewBag.TipoProductoList)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+
+
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre de producto:</label>
+                        <input type="text" class="form-control" name="Nombre" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Cantidad:</label>
+                        <input type="text" class="form-control" name="Cantidad" required />
+                        <label></label> 
+
+                    </div>
+                    <h1></h1>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a class="btn btn-danger" href="@Url.Action("Inventario","Inventario")">Regresar</a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

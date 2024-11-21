@@ -1,0 +1,32 @@
+﻿@model PRUEBAS_LOGIN.Models.Productos
+
+@{
+    ViewBag.Title = "EliminarProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="card border-secondary">
+            <div class="card-header bg-secondary text-white">
+                <h4>ELIMINAR PRODUCTO</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-danger">
+                    Esta a punto de eliminar este producto, dicha acción no se puede deshacer.
+                    ¿Está seguro de eliminar a @Html.DisplayTextFor(m => m.Nombre) del sistema?
+                </div>
+
+                <form action="@Url.Action("EliminarProducto","Inventario")" method="post">
+                    <input type="hidden" class="form-control" name="Id_Producto" value="@Html.DisplayTextFor(p => p.Producto_Id)" required />
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Inventario","Inventario")">Regresar</a>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

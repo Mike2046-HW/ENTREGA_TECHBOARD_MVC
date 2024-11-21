@@ -1,0 +1,39 @@
+﻿@model PRUEBAS_LOGIN.Models.Paqueteria
+
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+
+        <div class="card border-secondary">
+            <div class="card-header bg-secondary text-white">
+                <h4>REGISTRAR NUEVA PAQUETERIA</h4>
+            </div>
+            <div class="card-body">
+                <form action="@Url.Action("Agregar","Paqueteria")" method="post">
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control" name="Nombre" required/>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo de contacto:</label>
+                        <input type="text" class="form-control" name="Correo_Electronico" required/>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono:</label>
+                        <input type="text" class="form-control" name="Telefono" required/>
+                        <label></label>
+
+                    </div>
+                    <h1></h1>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a class="btn btn-danger" href="@Url.Action("Paqueteria","Paqueteria")">Regresar</a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿@model List<PRUEBAS_LOGIN.Models.Productos>
+
+@{
+    ViewBag.Title = "Inventario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row mt-3" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="card border-dark">
+            <div class="card-header bg-dark text-white">
+                <h4>INVENTARIO</h4>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-success" href="@Url.Action("AgregarProducto","Inventario")">Agregar producto</a>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Producto</th>
+                                <th>Categoria</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (PRUEBAS_LOGIN.Models.Productos item in Model)
+                             {
+                                   <tr>
+                                       <td>@item.Producto_Id</td>
+                                       <td>@item.Nombre</td>
+                                       <td>@item.Nombre_Tipo</td>
+                                       <td>@item.Cantidad</td>
+                                       <td>
+                                           <a class="btn btn-primary btn-sm" href="@Url.Action("EditarProducto", "Inventario", new { Producto_Id = item.Producto_Id })">Editar</a>
+                                           <a class="btn btn-danger btn-sm"href="@Url.Action("EliminarProducto", "Inventario", new { Producto_Id = item.Producto_Id })">Eliminar</a>
+                                       </td>
+                                   </tr>
+                             }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sección de Gráfica de Stock de Productos -->
+<div class="card border-dark mt-3">
+    <h2 class="text-center">Gráfica de Stock de Productos</h2>
+    <div id="chart_div"></div>
+</div>
+
+<!-- Código de Google Charts -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart', 'table'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        // Obtener los datos desde el ViewBag (asumiendo que la variable se llama ProductosData en el controlador)
+        var productosData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.ProductosData));
+
+        var data = new google.visualization.DataTable();
+
+        // Definir las columnas: Producto (string) y Cantidad (number)
+        data.addColumn('string', 'Producto');
+        data.addColumn('number', 'Cantidad');
+
+        // Añadir cada producto y su stock al conjunto de datos
+        productosData.forEach(function(item) {
+            data.addRow([item.Nombre, item.Cantidad]);
+        });
+
+        // Opciones de la gráfica
+        var options = {
+            title: 'Distribución de Stock de Productos',
+            width: '80%',  // Aumenta el ancho a un 80% de su contenedor
+            height: 600,   // Aumenta la altura de la gráfica
+            pieHole: 0.4,  // Usar un gráfico de dona (puedes cambiarlo a 0 para un gráfico circular completo)
+            is3D: false    // Cambiar a true para un gráfico 3D
+        };
+
+        // Dibujar la gráfica en el div con id 'chart_div'
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+
+

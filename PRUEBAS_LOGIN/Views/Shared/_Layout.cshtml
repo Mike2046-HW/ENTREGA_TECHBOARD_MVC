@@ -1,0 +1,59 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{bool tienePermiso = (Session["usuario"] != null &&
+                          ((PRUEBAS_LOGIN.Models.Usuario)Session["usuario"]).Id_rol == PRUEBAS_LOGIN.Models.Rol.Admin); }
+
+    <style>
+        .active-link {
+            background-color: rgba(0, 255, 0, 0.2); /* Sombra verde */
+            border-radius: 5px; /* bordes redondeados */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("PROYECTO TECHBOARD", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Index" ? " active-link" : "") })</li>
+                    <li>@Html.ActionLink("Productos", "Inventario", "Inventario", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Inventario" ? " active-link" : "") })</li>
+                    <li>@Html.ActionLink("Paqueteria", "Paqueteria", "Paqueteria", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Paqueteria" ? " active-link" : "") })</li>
+                    <li>@Html.ActionLink("Pedidos", "Pedido", "Pedido", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Pedido" ? " active-link" : "") })</li>
+                    @if (tienePermiso)
+                    {
+                        <li>@Html.ActionLink("Administrar Usuarios", "Usuarios", "Usuario", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Usuario" ? " active-link" : "") })</li>
+                    }
+                    <li>@Html.ActionLink("Cerrar Sesión", "CerrarSesion", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+
+<!-- Footer -->
+<footer class="text-center text-white bg-dark py-3">
+    <!-- Información de derechos reservados y contacto adicional -->
+    <p>&copy; 2024 Techboard Logistic Company
+
+</html>

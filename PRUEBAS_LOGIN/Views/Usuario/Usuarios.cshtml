@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PRUEBAS_LOGIN.Models.Usuario>
+
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="card border-dark">
+            <div class="card-header bg-dark text-white">
+                <h4>USUARIOS</h4>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-success" href="@Url.Action("AgregarUsuario","Usuario")">Crear nuevo usuario</a>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Rol</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.IdUsuario</td>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.Correo</td>
+                                        <td>@Enum.GetName(typeof(PRUEBAS_LOGIN.Models.Rol), item.Id_rol)</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm" href="@Url.Action("EditarUsuario", "Usuario", new { IdUsuario = item.IdUsuario })">Editar</a>
+                                            <a class="btn btn-danger btn-sm" href="@Url.Action("EliminarUsuario", "Usuario", new { IdUsuario = item.IdUsuario })">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
