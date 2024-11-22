@@ -128,15 +128,21 @@ namespace PRUEBAS_LOGIN.Controllers
 
                 oUsuario.IdUsuario = Convert.ToInt32(cmd.ExecuteScalar().ToString());
 
-                // Obtener los roles del usuario
-                cmd = new SqlCommand("sp_ObtenerRolesPorUsuario", cn);
-                cmd.Parameters.AddWithValue("Correo", oUsuario.Correo);
-                cmd.CommandType = CommandType.StoredProcedure;
-                int rolId = (int)cmd.ExecuteScalar();
+                try
+                {
+                    // Obtener los roles del usuario
+                    cmd = new SqlCommand("sp_ObtenerRolesPorUsuario", cn);
+                    cmd.Parameters.AddWithValue("Correo", oUsuario.Correo);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    int rolId = (int)cmd.ExecuteScalar();
 
-                // Asigna el rol obtenido
-                oUsuario.Id_rol = (Rol)rolId;
-
+                    // Asigna el rol obtenido
+                    oUsuario.Id_rol = (Rol)rolId;
+                }
+                catch (Exception)
+                {
+                    TempData["mensaje2"] = "Revise sus credenciales ususario no encontrado.";
+                }
             }
 
             /*En caso de que el Id del usuario sea diferente a 0,

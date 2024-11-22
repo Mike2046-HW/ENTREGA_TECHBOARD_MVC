@@ -19,7 +19,6 @@ namespace PRUEBAS_LOGIN.Controllers
 
         private static List<Paqueteria> ObjLista = new List<Paqueteria>();
 
-
         public ActionResult Paqueteria()
         {
 

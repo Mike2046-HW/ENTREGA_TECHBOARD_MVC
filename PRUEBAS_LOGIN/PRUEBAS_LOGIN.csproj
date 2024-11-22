@@ -136,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Comprobante.cs" />
     <Compile Include="Models\Paqueteria.cs" />
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Productos.cs" />
@@ -166,9 +167,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\462572303_380842948356615_2194976416345228548_n.jpg" />
-    <Content Include="Images\462575814_8317078611754804_7475809933451111297_n.jpg" />
-    <Content Include="Images\462637800_3889648714684924_6492643852878451671_n.jpg" />
     <Content Include="Images\Fondo.jpg" />
     <Content Include="Images\Fondo.png" />
     <Content Include="Images\techboard.jpeg" />

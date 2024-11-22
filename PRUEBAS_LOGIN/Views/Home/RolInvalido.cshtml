@@ -1,18 +1,24 @@
-﻿
-@{
-    ViewBag.Title = "RolInvalido";
+﻿@{
+    ViewBag.Title = "Rol Inválido";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
+    <title>Error - Rol Inválido</title>
 </head>
+
 <body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>Usted no tiene autorizacion para realizar esa función.</h2>
-    </hgroup>
+    <section class="d-flex align-items-center justify-content-center vh-100" style="background-color: #F8F9FA;">
+        <div class="text-center">
+            <div class="alert alert-danger shadow-lg p-4">
+                <h1 class="display-4" style="color: #DC3545;">Error</h1>
+                <h2 class="mb-3" style="color: #6C757D;">No tiene autorización para realizar esta función.</h2>
+                <p>Por favor, contacte al administrador si cree que esto es un error.</p>
+                <a href="~/Home/Index" class="btn btn-outline-danger mt-3">Regresar al inicio</a>
+            </div>
+        </div>
+    </section>
 </body>
 

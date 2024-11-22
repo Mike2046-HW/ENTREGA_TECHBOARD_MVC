@@ -1,96 +1,91 @@
 ﻿@model PRUEBAS_LOGIN.Models.Pedido
 
 @{
-    ViewBag.Title = "AgregarPedido";
+    ViewBag.Title = "Nuevo Pedido";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row" style="margin-top:30px">
-    <div class="col-sm-12">
-
-        <div class="card border-secondary">
-            <div class="card-header bg-secondary text-white text-center">
-                <h4>NUEVO PEDIDO</h4>
-            </div>
-            <div class="card-body">
-                <form action="@Url.Action("AgregarPedido","Pedido")" method="post">
-                    <h5 class="text-secondary mb-4">Pruebas de Listas Desplegables</h5>
-
-                    <!-- Lista desplegable para Comprador -->
-                    <div class="form-group">
-                        <label for="Comprador_Id" class="font-weight-bold">Empresa Compradora</label>
-                        <select class="form-control" id="Comprador_Id" name="Comprador_Id" required>
-                            <option value="">Seleccione una empresa</option>
-                            @foreach (var item in ViewBag.CompradoresList)
-                            {
-                                <option value="@item.Value">@item.Text</option>
-                            }
-                        </select>
-                    </div>
-
-                    <!-- Lista desplegable para Producto -->
-                    <div class="form-group">
-                        <label for="Producto_Id" class="font-weight-bold">Producto</label>
-                        <select class="form-control" id="Producto_Id" name="Producto_Id" required>
-                            <option value="">Seleccione un producto</option>
-                            @foreach (var item in ViewBag.ProductosList)
-                            {
-                                <option value="@item.Value">@item.Text</option>
-                            }
-                        </select>
-                    </div>
-
-                    <!-- Campo de texto para Cantidad -->
-                    <div class="form-group">
-                        <label for="Cantidad" class="font-weight-bold">Cantidad a adquirir</label>
-                        <input type="number" class="form-control" id="Cantidad" name="Cantidad" placeholder="Ingrese la cantidad" required />
-                    </div>
-
-                    <!-- Lista desplegable para Paquetería -->
-                    <div class="form-group">
-                        <label for="Paqueteria_Id" class="font-weight-bold">Paquetería</label>
-                        <select class="form-control" id="Paqueteria_Id" name="Paqueteria_Id">
-                            <option value="">Seleccione una paquetería</option>
-                            @foreach (var item in ViewBag.PaqueteriasList)
-                            {
-                                <option value="@item.Value">@item.Text</option>
-                            }
-                        </select>
-                    </div>
-
-                    <!-- Lista desplegable para Estado de Envío -->
-                    <div class="form-group">
-                        <label for="Estado_Envio_Id" class="font-weight-bold">Estado del Envío</label>
-                        <select class="form-control" id="Estado_Envio_Id" name="Estado_Envio_Id" required>
-                            <option value="">Seleccione un estado</option>
-                            @foreach (var item in ViewBag.EstadosList)
-                            {
-                                <option value="@item.Value">@item.Text</option>
-                            }
-                        </select>
-                    </div>
-
-                    <!-- Lista desplegable para Vendedor -->
-                    <div class="form-group">
-                        <label for="Vendedor_Id" class="font-weight-bold">Empresa Vendedora</label>
-                        <select class="form-control" id="Vendedor_Id" name="Vendedor_Id" required>
-                            <option value="">Seleccione una empresa</option>
-                            @foreach (var item in ViewBag.VendedoresList)
-                            {
-                                <option value="@item.Value">@item.Text</option>
-                            }
-                        </select>
-                    </div>
-
-                    <!-- Botones de acción -->
-                    <div class="form-group text-center mt-4">
-                        <button type="submit" class="btn btn-primary">Registrar</button>
-                        <a class="btn btn-danger" href="@Url.Action("Pedido","Pedido")">Regresar</a>
-                    </div>
-
-                </form>
-            </div>
+<div class="d-flex justify-content-center mt-5">
+    <div class="card shadow border-0" style="width: 70%;">
+        <!-- Encabezado del formulario -->
+        <div class="card-header bg-dark text-white text-center">
+            <h4 class="mb-0">REGISTRO DE NUEVO PEDIDO</h4>
         </div>
+        <!-- Cuerpo del formulario -->
+        <div class="card-body px-5 py-4">
+            <form action="@Url.Action("AgregarPedido", "Pedido")" method="post">
+                <h5 class="text-secondary mb-4 text-center">Complete los datos del pedido</h5>
 
+                <div class="row">
+                    <!-- Primera columna -->
+                    <div class="col-md-6">
+                        <!-- Empresa Compradora -->
+                        <div class="form-group mb-3">
+                            <label for="Comprador_Id" class="font-weight-bold">Empresa Compradora</label>
+                            <select class="form-control form-select" id="Comprador_Id" name="Comprador_Id" required>
+                                <option value="">Seleccione una empresa</option>
+                                @foreach (var item in ViewBag.CompradoresList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Producto -->
+                        <div class="form-group mb-3">
+                            <label for="Producto_Id" class="font-weight-bold">Producto</label>
+                            <select class="form-control form-select" id="Producto_Id" name="Producto_Id" required>
+                                <option value="">Seleccione un producto</option>
+                                @foreach (var item in ViewBag.ProductosList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Cantidad -->
+                        <div class="form-group mb-3">
+                            <label for="Cantidad" class="font-weight-bold">Cantidad a adquirir</label>
+                            <input type="number" class="form-control" id="Cantidad" name="Cantidad" placeholder="Ingrese la cantidad" required />
+                        </div>
+                    </div>
+
+                    <!-- Segunda columna -->
+                    <div class="col-md-6">
+                        <!-- Paquetería -->
+                        <div class="form-group mb-3">
+                            <label for="Paqueteria_Id" class="font-weight-bold">Paquetería</label>
+                            <select class="form-control form-select" id="Paqueteria_Id" name="Paqueteria_Id">
+                                <option value="">Seleccione una paquetería</option>
+                                @foreach (var item in ViewBag.PaqueteriasList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Estado del Envío -->
+                        <div class="form-group mb-3">
+                            <label for="Estado_Envio_Id" class="font-weight-bold">Estado del Envío</label>
+                            <select class="form-control form-select" id="Estado_Envio_Id" name="Estado_Envio_Id" required>
+                                <option value="">Seleccione un estado</option>
+                                @foreach (var item in ViewBag.EstadosList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Botones -->
+                <div class="form-group text-center mt-4">
+                    <button type="submit" class="btn btn-success btn-lg me-2">Registrar Pedido</button>
+                    <a class="btn btn-danger btn-lg" href="@Url.Action("Pedido", "Pedido")">Cancelar</a>
+                </div>
+
+            </form>
+        </div>
     </div>
 </div>

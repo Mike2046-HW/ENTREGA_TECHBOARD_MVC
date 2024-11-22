@@ -7,17 +7,14 @@
 
 <div class="row" style="margin-top:30px">
     <div class="col-sm-12">
-
         <div class="card border-secondary">
-            <div class="card-header bg-secondary text-white">
+            <div class="card-header bg-dark text-white">
                 <h4>AGREGAR NUEVO PRODUCTO</h4>
             </div>
             <div class="card-body">
                 <form action="@Url.Action("AgregarProducto","Inventario")" method="post">
                     <div class="form-group">
                         <label>Tipo de Producto:</label>
-
-
                         <select class="form-control" name="Nombre_Tipo" required>
                             <option value="">Seleccione un tipo de producto</option>
                             @foreach (var item in ViewBag.TipoProductoList)
@@ -25,8 +22,6 @@
                                 <option value="@item.Value">@item.Text</option>
                             }
                         </select>
-
-
                     </div>
                     <div class="form-group">
                         <label>Nombre de producto:</label>
@@ -35,15 +30,21 @@
                     <div class="form-group">
                         <label>Cantidad:</label>
                         <input type="text" class="form-control" name="Cantidad" required />
-                        <label></label> 
-
                     </div>
-                    <h1></h1>
+                    <div class="form-group">
+                        <label>Vendedor:</label>
+                        <select class="form-control" name="Vendedor_Id" required>
+                            <option value="">Seleccione un vendedor</option>
+                            @foreach (var item in ViewBag.VendedoresList)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Registrar</button>
                     <a class="btn btn-danger" href="@Url.Action("Inventario","Inventario")">Regresar</a>
                 </form>
             </div>
         </div>
-
     </div>
 </div>

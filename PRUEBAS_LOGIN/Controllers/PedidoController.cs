@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data;
 using PRUEBAS_LOGIN.Permisos;
+using System.Security.Cryptography.X509Certificates;
 
 namespace PRUEBAS_LOGIN.Controllers
 {
@@ -22,14 +23,13 @@ namespace PRUEBAS_LOGIN.Controllers
         // GET: Pedido
         public ActionResult Pedido()
         {
-
             ObjLista = new List<Pedido>();
 
-            using (SqlConnection ObjConexion = new SqlConnection (conexion))
+            using (SqlConnection ObjConexion = new SqlConnection(conexion))
             {
-                SqlCommand cmd = new SqlCommand ("Select * From v_Detalles_Pedido", ObjConexion);
+                SqlCommand cmd = new SqlCommand("Select * From v_Detalles_Pedido", ObjConexion);
                 cmd.CommandType = CommandType.Text;
-                ObjConexion.Open ();
+                ObjConexion.Open();
 
                 using (SqlDataReader Lector = cmd.ExecuteReader())
                 {
@@ -46,8 +46,7 @@ namespace PRUEBAS_LOGIN.Controllers
                         nuevoPedido.Vendedor = Lector["Vendedor"].ToString();
                         nuevoPedido.Paqueteria = Lector["Paquetería"].ToString();
 
-                        ObjLista.Add (nuevoPedido);
-
+                        ObjLista.Add(nuevoPedido);
                     }
                 }
             }
@@ -166,43 +165,57 @@ namespace PRUEBAS_LOGIN.Controllers
 
 
         [HttpPost]
-        public ActionResult AgregarPedido(Pedido ObjPedido,int Comprador_Id, int Producto_Id, int Cantidad, int Paqueteria_Id, int Estado_Envio_Id, int Vendedor_Id)
+        public ActionResult AgregarPedido(Pedido ObjPedido, int Comprador_Id, int Producto_Id, int Cantidad, int Paqueteria_Id, int Estado_Envio_Id)
         {
+            // Obtener el Vendedor_Id automáticamente para el Producto_Id seleccionado
+            int vendedorId = 0;
             using (SqlConnection ObjConexion = new SqlConnection(conexion))
             {
+                // Consultar el vendedor asociado al producto
+                SqlCommand cmdVendedor = new SqlCommand("SELECT TOP 1 Vendedor_Id FROM Vendedor_Producto WHERE Producto_Id = @Producto_Id", ObjConexion);
+                cmdVendedor.Parameters.AddWithValue("@Producto_Id", Producto_Id);
+                ObjConexion.Open();
+                var result = cmdVendedor.ExecuteScalar();
 
-                    SqlCommand cmd = new SqlCommand("sp_Insertar_Pedido", ObjConexion);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                // Si no se encuentra un vendedor para el producto, mostrar mensaje de error
+                if (result != null)
+                {
+                    vendedorId = Convert.ToInt32(result);
+                }
+                else
+                {
+                    // Si no se encontró un vendedor, puedes manejar el error aquí (ej. redirigir o mostrar un mensaje)
+                    ViewBag.ErrorMessage = "No se encontró un vendedor para el producto seleccionado.";
+                    return View();
+                }
+            }
 
-                    // Agregar parámetros
-                    cmd.Parameters.AddWithValue("Comprador_Id", Comprador_Id);
-                    cmd.Parameters.AddWithValue("Producto_Id", Producto_Id);
-                    cmd.Parameters.AddWithValue("Cantidad", Cantidad);
-                    cmd.Parameters.AddWithValue("Paqueteria_Id", Paqueteria_Id);
-                    cmd.Parameters.AddWithValue("Estado_Envio_Id", Estado_Envio_Id);
-                    cmd.Parameters.AddWithValue("Vendedor_Id", Vendedor_Id);
+            // Ahora que tenemos el Vendedor_Id, pasamos todos los parámetros al procedimiento almacenado
+            using (SqlConnection ObjConexion = new SqlConnection(conexion))
+            {
+                SqlCommand cmd = new SqlCommand("sp_Insertar_Pedido", ObjConexion);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                // Agregar parámetros
+                cmd.Parameters.AddWithValue("Comprador_Id", Comprador_Id);
+                cmd.Parameters.AddWithValue("Producto_Id", Producto_Id);
+                cmd.Parameters.AddWithValue("Cantidad", Cantidad);
+                cmd.Parameters.AddWithValue("Paqueteria_Id", Paqueteria_Id);
+                cmd.Parameters.AddWithValue("Estado_Envio_Id", Estado_Envio_Id);
+                cmd.Parameters.AddWithValue("Vendedor_Id", vendedorId);  // Asignamos el Vendedor_Id automáticamente
 
                 // Ejecutar el procedimiento almacenado
                 ObjConexion.Open();
                 cmd.ExecuteNonQuery();
-
-                ObjPedido.Cantidad_Pedido = Cantidad;
-                ObjPedido.Nombre_Empresa_Comprador = Comprador_Id.ToString();
-                ObjPedido.NombreProducto = Producto_Id.ToString();
-
-
-                // Llamar al método para generar el comprobante en PDF
-                comprobanteService.GenerarComprobantePDF(
-                    ObjPedido.Cantidad_Pedido,
-                    ObjPedido.Nombre_Empresa_Comprador,
-                    ObjPedido.Nombre_Producto
-                    );
-
             }
+
+            // Si todo es exitoso, generar el comprobante
+            comprobanteService.GenerarComprobantePDF(ObjPedido.Cantidad, ObjPedido.Comprador, ObjPedido.Vendedor);
 
             // Redirigir o mostrar mensaje de éxito
             return RedirectToAction("Pedido", "Pedido");
         }
+
+
     }
 }

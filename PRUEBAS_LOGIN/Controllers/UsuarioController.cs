@@ -13,6 +13,7 @@ using System.Text;
 
 namespace PRUEBAS_LOGIN.Controllers
 {
+    [ValidarSesion]
     public class UsuarioController : Controller
     {
         //Cadena de conexión

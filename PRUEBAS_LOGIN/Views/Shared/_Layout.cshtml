@@ -1,4 +1,5 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
@@ -7,9 +8,30 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @{bool tienePermiso = (Session["usuario"] != null &&
-                          ((PRUEBAS_LOGIN.Models.Usuario)Session["usuario"]).Id_rol == PRUEBAS_LOGIN.Models.Rol.Admin); }
+                              ((PRUEBAS_LOGIN.Models.Usuario)Session["usuario"]).Id_rol == PRUEBAS_LOGIN.Models.Rol.Admin); }
 
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .body-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            background-color: #212529;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto; /* Empuja el footer al final */
+        }
+
         .active-link {
             background-color: rgba(0, 255, 0, 0.2); /* Sombra verde */
             border-radius: 5px; /* bordes redondeados */
@@ -32,28 +54,30 @@
                     <li>@Html.ActionLink("Pedidos", "Pedido", "Pedido", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Pedido" ? " active-link" : "") })</li>
                     @if (tienePermiso)
                     {
-                        <li>@Html.ActionLink("Administrar Usuarios", "Usuarios", "Usuario", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Usuario" ? " active-link" : "") })</li>
+                        <li>
+                            @Html.ActionLink("Administrar Usuarios", "Usuarios", "Usuario", new { area = "" },
+                        new { @class = "nav-link" + (ViewContext.RouteData.Values["controller"].ToString() == "Usuario" ? " active-link" : "") })
+                        </li>
                     }
+
                     <li>@Html.ActionLink("Cerrar Sesión", "CerrarSesion", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Techboard Logistic Company</p>
+    </footer>
 </body>
-
-<!-- Footer -->
-<footer class="text-center text-white bg-dark py-3">
-    <!-- Información de derechos reservados y contacto adicional -->
-    <p>&copy; 2024 Techboard Logistic Company
-
 </html>
