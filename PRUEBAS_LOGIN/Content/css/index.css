@@ -1,0 +1,72 @@
+﻿/* Hero Section */
+.hero-section {
+    background-image: url('/Images/Fondo.png'); /* Ruta relativa */
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5); /* Efecto de oscurecimiento */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero-section h1 {
+    font-size: 3em; /* Ajustar tamaño del texto */
+    margin: 0;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Estilos del título principal */
+#title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4em;
+    letter-spacing: 1px;
+    margin-top: 20px;
+}
+
+/* Estilos de la descripción */
+.lead {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.4em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilos del botón */
+.hero-btn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 10px 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .hero-btn:hover {
+        background-color: #ffffff;
+        color: #02AC66;
+        transform: scale(1.05);
+    }
+
+/* Sección de Misión y Visión */
+#mision-vision h2 {
+    color: #02AC66;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+#mision-vision p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1em;
+}

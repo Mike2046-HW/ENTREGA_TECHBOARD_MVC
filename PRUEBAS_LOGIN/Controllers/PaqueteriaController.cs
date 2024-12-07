@@ -50,12 +50,14 @@ namespace PRUEBAS_LOGIN.Controllers
         }
 
         [HttpGet]
+        [PermisosRol(Rol.Admin)]
         public ActionResult Agregar()
         {
             return View();
         }
 
         [HttpPost]
+        [PermisosRol(Rol.Admin)]
         public ActionResult Agregar(Paqueteria ObjPaqueteria)
         {
 
@@ -77,6 +79,7 @@ namespace PRUEBAS_LOGIN.Controllers
         }
 
         [HttpGet]
+        [PermisosRol(Rol.Admin)]
         public ActionResult Editar(int? Paqueteria_Id)
         {
 
@@ -89,6 +92,7 @@ namespace PRUEBAS_LOGIN.Controllers
         }
 
         [HttpPost]
+        [PermisosRol(Rol.Admin)]
         public ActionResult Editar(Paqueteria ObjPaqueteria)
         {
             using (SqlConnection ObjConexion = new SqlConnection(conexion))
@@ -110,6 +114,7 @@ namespace PRUEBAS_LOGIN.Controllers
         }
 
         [HttpGet]
+        [PermisosRol(Rol.Admin)]
         public ActionResult Eliminar(int? Paqueteria_Id)
         {
 
@@ -123,6 +128,7 @@ namespace PRUEBAS_LOGIN.Controllers
 
         //AGREGAR UN INDICADOR QUE DIGA "NO PUEDES ELIMINAR ESTA PAQUETERIA EN ESTE MOMENTO"
         [HttpPost]
+        [PermisosRol(Rol.Admin)]
         public ActionResult Eliminar(string Paqueteria_Id)
         {
             using (SqlConnection ObjConexion = new SqlConnection(conexion))

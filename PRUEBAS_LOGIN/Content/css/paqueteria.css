@@ -1,0 +1,12 @@
+﻿
+
+#mi_mapa {
+    height: 50vh; /* 50% de la altura del viewport */
+    width: 100%; /* 100% del ancho del contenedor */
+}
+
+#chart_div {
+    width: 100%; /* 100% del ancho del contenedor */
+    height: 50vh; /* 50% de la altura del viewport */
+    margin: 0 auto;
+}

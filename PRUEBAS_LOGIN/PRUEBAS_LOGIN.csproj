@@ -48,6 +48,9 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.1.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
     </Reference>
@@ -127,21 +130,24 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
-    <Compile Include="Controllers\GeneradorComprobantePDFController.cs" />
+    <Compile Include="Controllers\CompradorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventarioController.cs" />
     <Compile Include="Controllers\PaqueteriaController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\VendedorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Comprador.cs" />
     <Compile Include="Models\Comprobante.cs" />
     <Compile Include="Models\Paqueteria.cs" />
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Productos.cs" />
     <Compile Include="Models\Rol.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Vendedor.cs" />
     <Compile Include="Permisos\PermisosRolAttribute.cs" />
     <Compile Include="Permisos\ValidarSesionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,7 +169,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\layout.css" />
     <Content Include="Content\css\Login.css" />
+    <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\paqueteria.css" />
+    <Content Include="Content\css\Registro.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -217,10 +227,19 @@
     <Content Include="Views\Usuario\EditarUsuario.cshtml" />
     <Content Include="Views\Usuario\EliminarUsuario.cshtml" />
     <Content Include="Views\Usuario\Usuarios.cshtml" />
+    <Content Include="Views\Comprador\Compradores.cshtml" />
+    <Content Include="Views\Vendedor\Vendedores.cshtml" />
+    <Content Include="Views\Comprador\RegistrarComprador.cshtml" />
+    <Content Include="Views\Comprador\EditarComprador.cshtml" />
+    <Content Include="Views\Comprador\EliminarComprador.cshtml" />
+    <Content Include="Views\Vendedor\RegistrarVendedor.cshtml" />
+    <Content Include="Views\Vendedor\EditarVendedor.cshtml" />
+    <Content Include="Views\Vendedor\EliminarVendedor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\GeneradorComprobantePDF\" />
+    <Folder Include="Views\Pedido\DescargarComprobante\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

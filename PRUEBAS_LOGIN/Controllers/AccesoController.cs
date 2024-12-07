@@ -38,10 +38,17 @@ namespace PRUEBAS_LOGIN.Controllers
          se cre un objeto llamado oUsuario y se ingresa en el método 
          como un parámetro*/
         [HttpPost]
-        public ActionResult Registrar(Usuario oUsuario)
+        public ActionResult Registrar(Usuario oUsuario, string PinIngreso)
         {
             bool registrado;
             string mensaje;
+
+            // Validar el PIN ingresado
+            if (!ValidarPin(PinIngreso))
+            {
+                ViewData["mensaje"] = "El PIN de seguridad es incorrecto.";
+                return View();
+            }
 
             /*Este condicional compara la clave ingresada en un registro de usuario con su
             confirmación, en caso de coincidir la clave dentro del objeto oUsuario se 
@@ -102,6 +109,19 @@ namespace PRUEBAS_LOGIN.Controllers
             else 
             {
                 return View();
+            }
+        }
+
+        // Método para validar el PIN de seguridad
+        private bool ValidarPin(string pinIngreso)
+        {
+            using (SqlConnection cn = new SqlConnection(cadena))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT Pin FROM Seguridad", cn);
+                cn.Open();
+                string pinGuardado = cmd.ExecuteScalar().ToString();
+
+                return pinIngreso == pinGuardado;
             }
         }
 

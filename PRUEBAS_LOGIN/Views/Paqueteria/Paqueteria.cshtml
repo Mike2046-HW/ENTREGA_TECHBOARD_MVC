@@ -1,29 +1,26 @@
-﻿@model List<PRUEBAS_LOGIN.Models.Paqueteria>
-
-@{
+﻿@{
     ViewBag.Title = "Paqueteria";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!DOCTYPE html>
+<html lang="es">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - TechBoard LC</title>
+
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="~/Content/css/paqueteria.css" />
+
+    <!-- Otros enlaces a recursos como Bootstrap, FontAwesome, etc. -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
     <!-- Estilos para Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-
-    <style>
-        #mi_mapa {
-            height: 50vh; /* 50% de la altura del viewport */
-            width: 100%; /* 100% del ancho del contenedor */
-        }
-
-        #chart_div {
-            width: 100%; /* 100% del ancho del contenedor */
-            height: 50vh; /* 50% de la altura del viewport */
-            margin: 0 auto;
-        }
-    </style>
 </head>
-
 <body>
     <!-- Sección de Paqueterías Disponibles -->
     <div class="row mt-3">
@@ -74,7 +71,7 @@
 
     <!-- Sección del Mapa -->
     <div class="card border-dark mt-3">
-        <h2 class="text-center">MAPA</h2>
+        <h2 class="text-center">PAQUETERÍAS DE TIJUANA</h2>
         <div id="mi_mapa"></div>
     </div>
 
@@ -93,12 +90,89 @@
             .bindPopup("Instituto Tecnológico de Tijuana Unidad Tomas Aquino")
             .openPopup();
 
-        L.marker([32.53270, -116.96431]).addTo(map)
-            .bindPopup("Universidad Autónoma de Baja California")
-            .openPopup();
-
         L.marker([32.504826, -116.975620]).addTo(map)
             .bindPopup("Oficina de correos DHL")
             .openPopup();
+
+        L.marker([32.5309122, -117.040729]).addTo(map)
+            .bindPopup("Paquetería Envía Fácil")
+            .openPopup();
+
+        L.marker([32.52676183500344, -117.03141313649161]).addTo(map)
+            .bindPopup("Centros de envío FedEx")
+            .openPopup();
+
+        L.marker([32.521695979878714, -117.02351671333545]).addTo(map)
+            .bindPopup("Todo Box Paquetería")
+            .openPopup();
+
+        L.marker([32.52516973988332, -117.01922517901143]).addTo(map)
+            .bindPopup("Paquete Express")
+            .openPopup();
+
+        L.marker([32.524735527227, -117.01321703095783]).addTo(map)
+            .bindPopup("Envíos a México")
+            .openPopup();
+
+        L.marker([32.52097226285085, -117.00806718956937]).addTo(map)
+            .bindPopup("Baja Pack Express")
+            .openPopup();
+
+        L.marker([32.51173136460094, -116.98855626306985]).addTo(map)
+            .bindPopup("Centro de envío FedEx")
+            .openPopup();
+
+        L.marker([32.52986688669113, -116.98076139310508]).addTo(map)
+            .bindPopup("QualityPost Tijuana")
+
+        L.marker([32.53356873488036, -116.98428132174327]).addTo(map)
+            .bindPopup("Nexus Mensajería")
+            .openPopup();
+
+        L.marker([32.51423147563335, -116.9724662385507]).addTo(map)
+            .bindPopup("Eco Paquete")
+            .openPopup();
+
+        L.marker([32.51341261498447, -116.9583858197277]).addTo(map)
+            .bindPopup("Servi Plus Pack Tijuana")
+            .openPopup();
+
+        L.marker([32.50235726616085, -116.95620092715174]).addTo(map)
+            .bindPopup("Apartado Postal.US")
+            .openPopup();
+
+        L.marker([32.50727092246272, -116.93993561517108]).addTo(map)
+            .bindPopup("Sendex Paquetería Tijuana")
+            .openPopup();
+
+        L.marker([32.54637427696483, -116.96531427517435]).addTo(map)
+            .bindPopup("Volaris Cargo Tijuana Envío")
+            .openPopup();
+
+        L.marker([32.54193280256511, -116.92162838743602]).addTo(map)
+            .bindPopup("Paquete Express")
+            .openPopup();
+
+        L.marker([32.54453754825238, -116.90789547759923]).addTo(map)
+            .bindPopup("Grupo Castores Cedis Tijuana")
+            .openPopup();
+
+        L.marker([32.532381421919446, -116.89416256776242]).addTo(map)
+            .bindPopup("Envíos Baja")
+            .openPopup();
+
+        L.marker([32.52196057549481, -116.8752798167368]).addTo(map)
+            .bindPopup("PZ Express Cucapah")
+            .openPopup();
+
+        L.marker([32.51646019704334, -116.88283291714704]).addTo(map)
+            .bindPopup("Paquetería y Mensajería Tijuana")
+            .openPopup();
+
+        L.marker([32.48460928566871, -116.87115994378577]).addTo(map)
+            .bindPopup("Redpack")
+            .openPopup();
+
     </script>
 </body>
+</html>

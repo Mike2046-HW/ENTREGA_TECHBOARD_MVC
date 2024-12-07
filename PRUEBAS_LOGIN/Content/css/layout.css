@@ -1,0 +1,64 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.body-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background-color: #212529;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+.navbar-nav .nav-link {
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+.active-link {
+    background-color: rgba(0, 255, 0, 0.2);
+    border-radius: 5px;
+}
+
+.nav-link.active-link {
+    background-color: rgba(0, 255, 0, 0.2) !important;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .nav-link.active-link:hover {
+        background-color: rgba(0, 255, 0, 0.5);
+    }
+
+#scrollTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 18px;
+    z-index: 1000;
+}

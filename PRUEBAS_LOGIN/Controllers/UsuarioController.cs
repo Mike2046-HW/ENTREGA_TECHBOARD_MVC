@@ -144,7 +144,14 @@ namespace PRUEBAS_LOGIN.Controllers
                 cmd.CommandType = CommandType.StoredProcedure;
                 ObjConexion.Open();
 
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    TempData["mensaje"] = "No es posible eliminar al útlimo usuario administrador.";
+                }
             }
 
             return RedirectToAction("Usuarios", "Usuario");
@@ -179,7 +186,7 @@ namespace PRUEBAS_LOGIN.Controllers
 
                 catch (Exception)
                 {
-                    TempData["mensaje"] = "No es posible eliminar el usuario en este momento.";
+                    TempData["mensaje"] = "No es posible eliminar al útlimo usuario administrador.";
                 }
 
             }

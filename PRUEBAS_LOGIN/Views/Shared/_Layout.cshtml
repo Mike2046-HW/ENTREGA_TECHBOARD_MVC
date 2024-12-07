@@ -1,66 +1,60 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - TechBoard LC</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @{bool tienePermiso = (Session["usuario"] != null &&
-                              ((PRUEBAS_LOGIN.Models.Usuario)Session["usuario"]).Id_rol == PRUEBAS_LOGIN.Models.Rol.Admin); }
-
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .body-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        footer {
-            background-color: #212529;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: auto; /* Empuja el footer al final */
-        }
-
-        .active-link {
-            background-color: rgba(0, 255, 0, 0.2); /* Sombra verde */
-            border-radius: 5px; /* bordes redondeados */
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/layout.css")" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow">
         <div class="container">
-            @Html.ActionLink("PROYECTO TECHBOARD", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")" aria-label="Ir al inicio">
+                <img src="~/Images/TECHBOARD.png" alt="Logo TechBoard" />
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Index" ? " active-link" : "") })</li>
-                    <li>@Html.ActionLink("Productos", "Inventario", "Inventario", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Inventario" ? " active-link" : "") })</li>
-                    <li>@Html.ActionLink("Paqueteria", "Paqueteria", "Paqueteria", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Paqueteria" ? " active-link" : "") })</li>
-                    <li>@Html.ActionLink("Pedidos", "Pedido", "Pedido", new { area = "" }, new { @class = "nav-link" + (ViewContext.RouteData.Values["action"].ToString() == "Pedido" ? " active-link" : "") })</li>
-                    @if (tienePermiso)
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Home")" class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Home" ? "active-link" : "")">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Inventario", "Inventario")" class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Inventario" ? "active-link" : "")">
+                            <i class="fas fa-cogs"></i> Productos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Paqueteria", "Paqueteria")" class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Paqueteria" ? "active-link" : "")">
+                            <i class="fas fa-cogs"></i> Paquetería
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Pedido", "Pedido")" class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Pedido" ? "active-link" : "")">
+                            <i class="fas fa-box"></i> Pedidos
+                        </a>
+                    </li>
+                    @if (Session["usuario"] != null && ((PRUEBAS_LOGIN.Models.Usuario)Session["usuario"]).Id_rol == PRUEBAS_LOGIN.Models.Rol.Admin)
                     {
-                        <li>
-                            @Html.ActionLink("Administrar Usuarios", "Usuarios", "Usuario", new { area = "" },
-                        new { @class = "nav-link" + (ViewContext.RouteData.Values["controller"].ToString() == "Usuario" ? " active-link" : "") })
+                        <li class="nav-item">
+                            <a href="@Url.Action("Usuarios", "Usuario")" class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Usuario" ? "active-link" : "")">
+                                <i class="fas fa-users"></i> Administrar Usuarios
+                            </a>
                         </li>
                     }
-
-                    <li>@Html.ActionLink("Cerrar Sesión", "CerrarSesion", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("CerrarSesion", "Home")" class="nav-link">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -71,13 +65,58 @@
         <hr />
     </div>
 
+    <div id="toast" class="toast position-fixed top-0 end-0 p-3" style="z-index: 1100;" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Notificación</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Techboard Logistic Company</p>
+    </footer>
+
+    <button id="scrollTopBtn" class="btn btn-primary" onclick="scrollToTop()">↑</button>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Techboard Logistic Company</p>
-    </footer>
+    <script>
+        window.onscroll = function () {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                document.getElementById("scrollTopBtn").style.display = "block";
+            } else {
+                document.getElementById("scrollTopBtn").style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showToast(message) {
+            const toastElement = document.getElementById('toast');
+            toastElement.querySelector('.toast-body').textContent = message;
+            new bootstrap.Toast(toastElement).show();
+        }
+
+        @if (TempData["MensajeExito"] != null)
+        {
+            <text>
+                showToast("@TempData["MensajeExito"]");
+            </text>
+        }
+        else if (TempData["MensajeError"] != null)
+        {
+            <text>
+                showToast("@TempData["MensajeError"]");
+            </text>
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-p3HLhl3cRJLAAok24GBNH6Ow1Fqol1iwI3pHjcbHjXlMjhsVNf6DXuV6iF5owyv4" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha384-oZdfLfjLlbbv5aPrJ5K9NO3mcHivFqw7eb6jB++NJoZJzB3zlG1I9pcQ9tGTZJGM" crossorigin="anonymous"></script>
 </body>
 </html>

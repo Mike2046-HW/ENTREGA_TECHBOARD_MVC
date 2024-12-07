@@ -12,6 +12,12 @@
                 <h4>USUARIOS</h4>
             </div>
             <div class="card-body">
+                @if (TempData["mensaje"] != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @TempData["mensaje"]
+                    </div>
+                }
                 <a class="btn btn-success" href="@Url.Action("AgregarUsuario","Usuario")">Crear nuevo usuario</a>
                 <div class="table-responsive">
                     <table class="table table-striped">

@@ -1,0 +1,62 @@
+﻿@model PRUEBAS_LOGIN.Models.Vendedor
+
+@{
+    ViewBag.Title = "Registrar Vendedor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <!-- Sección de Registrar Vendedor -->
+    <div class="card border-dark shadow-lg">
+        <!-- Encabezado -->
+        <div class="card-header bg-dark text-white text-center">
+            <h4 class="mb-0">REGISTRAR VENDEDOR</h4>
+        </div>
+        <!-- Contenido -->
+        <div class="card-body">
+            <form action="@Url.Action("RegistrarVendedor", "Vendedor")" method="post">
+                <!-- Información del Vendedor -->
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="calle" class="form-label">Calle</label>
+                        <input type="text" id="calle" class="form-control" name="Calle" placeholder="Ingrese la calle" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ciudad" class="form-label">Ciudad</label>
+                        <input type="text" id="ciudad" class="form-control" name="Ciudad" placeholder="Ingrese la ciudad" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="estado" class="form-label">Estado</label>
+                        <input type="text" id="estado" class="form-control" name="Estado" placeholder="Ingrese el estado" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="codigoPostal" class="form-label">Código Postal</label>
+                        <input type="text" id="codigoPostal" class="form-control" name="Codigo_Postal" placeholder="Ingrese el código postal" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="empresa" class="form-label">Nombre de Empresa</label>
+                        <input type="text" id="empresa" class="form-control" name="Nombre_Empresa" placeholder="Ingrese el nombre de la empresa" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" id="email" class="form-control" name="Correo_Electronico" placeholder="Ingrese el correo electrónico" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="tel" id="telefono" class="form-control" name="Telefono" placeholder="Ingrese el teléfono" required>
+                    </div>
+                </div>
+
+                <!-- Botones -->
+                <div class="mt-4 d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-check-circle"></i> Registrar
+                    </button>
+                    <a class="btn btn-warning" href="@Url.Action("Vendedores", "Vendedor")">
+                        <i class="bi bi-arrow-left"></i> Regresar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

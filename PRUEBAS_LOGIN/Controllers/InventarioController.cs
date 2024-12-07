@@ -57,6 +57,7 @@ namespace PRUEBAS_LOGIN.Controllers
         }
 
         [HttpGet]
+        [PermisosRol(Rol.Admin)]
         public ActionResult AgregarProducto()
         {
             // Crear la lista de tipos de productos
@@ -111,6 +112,7 @@ namespace PRUEBAS_LOGIN.Controllers
         }
 
         [HttpPost]
+        [PermisosRol(Rol.Admin)]
         public ActionResult AgregarProducto(Productos ObjProducto, int Vendedor_Id)
         {
             using (SqlConnection ObjConexion = new SqlConnection(conexion))
@@ -153,6 +155,7 @@ namespace PRUEBAS_LOGIN.Controllers
 
 
         [HttpGet]
+        [PermisosRol(Rol.Admin)]
         public ActionResult EditarProducto(int? Producto_Id)
         {
             if (Producto_Id == null)
@@ -191,6 +194,7 @@ namespace PRUEBAS_LOGIN.Controllers
         }
 
         [HttpPost]
+        [PermisosRol(Rol.Admin)]
         public ActionResult EditarProducto(Productos ObjProducto)
         {
             using (SqlConnection ObjConexion = new SqlConnection(conexion))
@@ -208,6 +212,7 @@ namespace PRUEBAS_LOGIN.Controllers
         }
 
         [HttpGet]
+        [PermisosRol(Rol.Admin)]
         public ActionResult EliminarProducto(int? Producto_Id)
         {
             if (Producto_Id == null)
@@ -219,6 +224,7 @@ namespace PRUEBAS_LOGIN.Controllers
         }
 
         [HttpPost]
+        [PermisosRol(Rol.Admin)]
         public ActionResult EliminarProducto(string Id_Producto)
         {
             using (SqlConnection ObjConexion = new SqlConnection(conexion))

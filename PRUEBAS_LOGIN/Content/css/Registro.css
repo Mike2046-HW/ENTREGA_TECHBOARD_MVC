@@ -1,0 +1,60 @@
+﻿
+/* Estilo del fondo y tarjeta de registro */
+body {
+    background: linear-gradient(135deg, #4ecca3, #393e46);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    width: 350px;
+    padding: 20px;
+}
+
+.card-header {
+    text-align: center;
+}
+
+    .card-header h3 {
+        color: #fff;
+    }
+
+.input-group-text {
+    background: #4ecca3;
+    border: none;
+    color: white;
+}
+
+.form-control {
+    background: #e0f7fa;
+    border: none;
+}
+
+.btn-register {
+    background-color: #4ecca3;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.card-footer {
+    text-align: center;
+    font-size: 0.9em;
+}
+
+    .card-footer a {
+        color: #4ecca3;
+        text-decoration: none;
+    }
+
+.logo img {
+    width: 500px;
+    margin-bottom: 15px;
+}

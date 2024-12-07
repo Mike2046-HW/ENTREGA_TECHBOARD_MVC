@@ -1,87 +1,319 @@
-﻿/* Made with love by Mutiullah Samim*/
-
-@import url('https://fonts.googleapis.com/css?family=Numans');
-
-html, body {
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    font-family: 'Numans', sans-serif;
-}
-
-.container {
-    height: 100%;
-    align-content: center;
+﻿
+body {
+    background: linear-gradient(135deg, #4ecca3, #393e46);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
 .card {
-    height: 370px;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 400px;
-    background-color: rgba(0,0,0,0.5) !important;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    width: 350px;
+    padding: 20px;
 }
 
-.social_icon span {
-    font-size: 60px;
-    margin-left: 10px;
-    color: #FFC312;
+.card-header {
+    text-align: center;
 }
-
-    .social_icon span:hover {
-        color: white;
-        cursor: pointer;
-    }
 
 .card-header h3 {
+    color: #fff;
+}
+
+.input-group-text {
+    background: #4ecca3;
+    border: none;
     color: white;
 }
 
-.social_icon {
-    position: absolute;
+.form-control {
+    background: #e0f7fa;
+    border: none;
+}
+
+.btn-login {
+    background-color: #4ecca3;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.card-footer {
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.card-footer a {
+    color: #4ecca3;
+    text-decoration: none;
+}
+
+.hero-section {
+    background-image: url('@Url.Content("~/Images/Fondo.png")'); /* imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-btn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 10px 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-btn:hover {
+    background-color: #ffffff;
+    color: #02AC66;
+    transform: scale(1.05);
+}
+
+#mision-vision h2 {
+    color: #02AC66;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+#mision-vision p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1em;
+}
+
+body {
+    background: linear-gradient(135deg, #4ecca3, #393e46);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    width: 350px;
+    padding: 20px;
+}
+
+.card-header {
+    text-align: center;
+}
+
+    .card-header h3 {
+        color: #fff;
+    }
+
+.input-group-text {
+    background: #4ecca3;
+    border: none;
+    color: white;
+}
+
+.form-control {
+    background: #e0f7fa;
+    border: none;
+}
+
+.btn-login {
+    background-color: #4ecca3;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.card-footer {
+    text-align: center;
+    font-size: 0.9em;
+}
+
+    .card-footer a {
+        color: #4ecca3;
+        text-decoration: none;
+    }
+
+.hero-section {
+    background-image: url('@Url.Content("~/Images/Fondo.png")'); /* imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-btn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 10px 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .hero-btn:hover {
+        background-color: #ffffff;
+        color: #02AC66;
+        transform: scale(1.05);
+    }
+
+#mision-vision h2 {
+    color: #02AC66;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+#mision-vision p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1em;
+}
+
+#mi_mapa {
+    height: 50vh; /* 50% de la altura del viewport */
+    width: 100%; /* 100% del ancho del contenedor */
+}
+
+#chart_div {
+    width: 100%; /* 100% del ancho del contenedor */
+    height: 50vh; /* 50% de la altura del viewport */
+    margin: 0 auto;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.body-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background-color: #212529;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+.navbar-nav .nav-link {
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+.active-link {
+    background-color: rgba(0, 255, 0, 0.2);
+    border-radius: 5px;
+}
+
+.nav-link.active-link {
+    background-color: rgba(0, 255, 0, 0.2) !important;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .nav-link.active-link:hover {
+        background-color: rgba(0, 255, 0, 0.5);
+    }
+
+#scrollTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
     right: 20px;
-    top: -45px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 18px;
+    z-index: 1000;
 }
 
-.input-group-prepend span {
-    width: 50px;
-    background-color: #FFC312;
-    color: black;
-    border: 0 !important;
+body {
+    background: linear-gradient(135deg, #4ecca3, #393e46);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
-input:focus {
-    outline: 0 0 0 0 !important;
-    box-shadow: 0 0 0 0 !important;
+.card {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    width: 350px;
+    padding: 20px;
 }
 
-.remember {
+.card-header {
+    text-align: center;
+}
+
+    .card-header h3 {
+        color: #fff;
+    }
+
+.input-group-text {
+    background: #4ecca3;
+    border: none;
     color: white;
 }
 
-    .remember input {
-        width: 20px;
-        height: 20px;
-        margin-left: 15px;
-        margin-right: 5px;
-    }
-
-.login_btn {
-    color: black;
-    background-color: #FFC312;
-    width: 100px;
+.form-control {
+    background: #e0f7fa;
+    border: none;
 }
 
-    .login_btn:hover {
-        color: black;
-        background-color: white;
-    }
-
-.links {
+.btn-register {
+    background-color: #4ecca3;
     color: white;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
 }
 
-    .links a {
-        margin-left: 4px;
+.card-footer {
+    text-align: center;
+    font-size: 0.9em;
+}
+
+    .card-footer a {
+        color: #4ecca3;
+        text-decoration: none;
     }
+
+.logo img {
+    width: 500px;
+    margin-bottom: 15px;
+}

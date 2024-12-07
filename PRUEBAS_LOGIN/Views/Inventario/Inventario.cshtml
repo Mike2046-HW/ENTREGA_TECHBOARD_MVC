@@ -24,18 +24,19 @@
                         </thead>
                         <tbody>
                             @foreach (PRUEBAS_LOGIN.Models.Productos item in Model)
-                             {
-                                   <tr>
-                                       <td>@item.Producto_Id</td>
-                                       <td>@item.Nombre</td>
-                                       <td>@item.Nombre_Tipo</td>
-                                       <td>@item.Cantidad</td>
-                                       <td>
-                                           <a class="btn btn-primary btn-sm" href="@Url.Action("EditarProducto", "Inventario", new { Producto_Id = item.Producto_Id })">Editar</a>
-                                           <a class="btn btn-danger btn-sm"href="@Url.Action("EliminarProducto", "Inventario", new { Producto_Id = item.Producto_Id })">Eliminar</a>
-                                       </td>
-                                   </tr>
-                             }
+                            {
+                                <tr>
+                                    <td>@item.Producto_Id</td>
+                                    <td>@item.Nombre</td>
+                                    <td>@item.Nombre_Tipo</td>
+                                    <td>@item.Cantidad</td>
+                                    <th style="width: 150px;"></th>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="@Url.Action("EditarProducto", "Inventario", new { Producto_Id = item.Producto_Id })">Editar</a>
+                                        <a class="btn btn-danger btn-sm" href="@Url.Action("EliminarProducto", "Inventario", new { Producto_Id = item.Producto_Id })">Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
 
                         </tbody>
                     </table>

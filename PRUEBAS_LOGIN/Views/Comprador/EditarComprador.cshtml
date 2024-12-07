@@ -1,0 +1,55 @@
+﻿@model PRUEBAS_LOGIN.Models.Comprador
+
+@{
+    ViewBag.Title = "EditarComprador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <!-- Sección de Compradores -->
+    <div class="row mt-3">
+        <div class="col-sm-12">
+            <div class="card border-dark">
+                <div class="card-header bg-dark text-white">
+                    <h4>EDITAR COMPRADOR</h4>
+                </div>
+                <div class="card-body">
+                    <form action="@Url.Action("EditarComprador","Comprador")" method="post">
+                        <input type="hidden" class=" form-control" name="Comprador_Id" value="@Html.DisplayTextFor(m =>m.Comprador_Id)" />
+                        <input type="hidden" class=" form-control" name="Direccion_Comprador_Id" value="@Html.DisplayTextFor(m =>m.Direccion_Comprador_Id)" />
+                        <div class="form-group">
+
+                            <label>Calle</label>
+                            <input type="text" class=" form-control" name="Calle" value="@Html.DisplayTextFor(m =>m.Calle)" />
+
+                            <label>Ciudad</label>
+                            <input type="text" class=" form-control" name="Ciudad" value="@Html.DisplayTextFor(m =>m.Ciudad)" />
+
+                            <label>Estado</label>
+                            <input type="text" class=" form-control" name="Estado" value="@Html.DisplayTextFor(m =>m.Estado)" />
+
+                            <label>Codigo Postal</label>
+                            <input type="text" class=" form-control" name="Codigo_Postal" value="@Html.DisplayTextFor(m =>m.Codigo_Postal)" />
+
+                            <label>Nombre de Empresa</label>
+                            <input type="text" class=" form-control" name="Nombre_Empresa" value="@Html.DisplayTextFor(m =>m.Nombre_Empresa)" />
+
+                            <label>RFC</label>
+                            <input type="text" class=" form-control" name="RFC" value="@Html.DisplayTextFor(m =>m.RFC)" />
+
+                            <label>Correo electrónico</label>
+                            <input type="text" class=" form-control" name="Correo_Electronico" value="@Html.DisplayTextFor(m =>m.Correo_Electronico)" />
+
+                            <label>Teléfono</label>
+                            <input type="text" class=" form-control" name="Telefono" value="@Html.DisplayTextFor(m =>m.Telefono)" />
+
+
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+                        <a class="btn btn-warning mt-3" href="@Url.Action("Compradores", "Comprador")">Regresar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
